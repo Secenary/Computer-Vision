@@ -152,12 +152,12 @@ def normalized_cross_correlation(f, g):
     Hf, Wf = f.shape
     Hg, Wg = g.shape
     
-    mu_g = np.mean(g)
+    mean_g = np.mean(g)
     sigma_g = np.std(g)
     if sigma_g == 0:
         sigma_g = 1e-15  
     
-    g_centered = g - mu_g
+    g_centered = g - mean_g
     
     pad_height = Hg // 2
     pad_width = Wg // 2
@@ -167,9 +167,9 @@ def normalized_cross_correlation(f, g):
     
     for n in range(Hf):
         for m in range(Wf):
-            window = padded_f[n:n+Hg, m:m+Wg]
-            mu_window = np.mean(window)
-            window_centered = window - mu_window
+            window = padded_f[n:n + Hg, m:m + Wg]
+            mean_window = np.mean(window)
+            window_centered = window - mean_window
             sigma_window = np.std(window)
             
             if sigma_window == 0:
