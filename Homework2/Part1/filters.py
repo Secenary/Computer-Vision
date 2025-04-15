@@ -155,7 +155,7 @@ def normalized_cross_correlation(f, g):
     mu_g = np.mean(g)
     sigma_g = np.std(g)
     if sigma_g == 0:
-        sigma_g = 1e-10  # Avoid division by zero
+        sigma_g = 1e-15  
     
     g_centered = g - mu_g
     
