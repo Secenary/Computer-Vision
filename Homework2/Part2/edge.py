@@ -31,7 +31,7 @@ def conv(image, kernel):
 
     for i in range(Hi):
         for j in range(Wi):
-            out[i, j] = np.sum(padded[i:i+Hk, j:j+Wk] * flipped_kernel) 
+            out[i, j] = np.sum(padded[i:i + Hk, j:j + Wk] * flipped_kernel) 
     ### END YOUR CODE
 
     return out
@@ -59,7 +59,7 @@ def gaussian_kernel(size, sigma):
     ### YOUR CODE HERE
     ax = np.arange(size) - size // 2
     xx, yy = np.meshgrid(ax, ax)
-    kernel = np.exp(-(xx**2 + yy**2) / (2 * sigma**2))
+    kernel = np.exp(-(xx ** 2 + yy ** 2) / (2 * sigma ** 2))
     kernel /= (2 * np.pi * sigma**2)
     ### END YOUR CODE
 
@@ -184,8 +184,8 @@ def double_thresholding(img, high, low):
             higher threshold and greater than the lower threshold.
     """
 
-    strong_edges = np.zeros(img.shape, dtype=bool)
-    weak_edges = np.zeros(img.shape, dtype=bool)
+    strong_edges = np.zeros(img.shape, dtype=bool) #The Python code here threw an error so I changed the np.bool to bool.
+    weak_edges = np.zeros(img.shape, dtype=bool) #The Python code here threw an error so I changed the np.bool to bool.
 
     ### YOUR CODE HERE
     strong_edges = (img >= high)
@@ -213,8 +213,8 @@ def get_neighbors(y, x, H, W):
     """
     neighbors = []
 
-    for i in (y-1, y, y+1):
-        for j in (x-1, x, x+1):
+    for i in (y - 1, y, y + 1):
+        for j in (x - 1, x, x + 1):
             if i >= 0 and i < H and j >= 0 and j < W:
                 if (i == y and j == x):
                     continue
@@ -262,7 +262,6 @@ def link_edges(strong_edges, weak_edges):
                 edges[ny, nx] = True
                 visited[ny, nx] = True
                 queue.append((ny, nx))
-    return edges
     ### END YOUR CODE
 
     return edges
